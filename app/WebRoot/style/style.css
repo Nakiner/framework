@@ -1,0 +1,158 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+html,body
+{
+    width: 100%;
+    height: 100%;
+}
+header
+{
+    width: 100%;
+    height: 25%;
+    display: block;
+}
+.img
+{
+    display: block;
+    position: relative;
+    float: left;
+    height: 50%;
+    width: 100%;
+}
+.hdr-bg
+{
+    width: 100%;
+    height: 25%;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 0;
+}
+.homer
+{
+    z-index: 1;
+    width: 15%;
+    height: 25%;
+    position: absolute;
+    z-index: 1;
+    left: 42%;
+    top: 0%;
+}
+.homer:hover
+{
+    opacity: 0.8;
+}
+.nav-header
+{
+    z-index: 2;
+    display: block;
+    position: relative;
+    opacity: 1;
+    top: 80.5%;
+    background: #2a2a2a;
+    height: 20%;
+    width: 100%;
+}
+.nav-header > ul > li
+{
+    border-right: 3px solid darkgrey;
+    padding: 0 1%;
+}
+.nav-header > ul > li:hover
+{
+    background: #3a3a3a;
+}
+.nav-header > ul > li > a, a:visited
+{
+    font-size: 20px;
+    display: block;
+    text-decoration: none;
+    color: white;
+    float: left;
+    width: 100%;
+    height: 100%;
+    margin-top: 17px;
+}
+.nav-header > ul
+{
+    height: 100%;
+    width: 100%;
+}
+.nav-header > ul > li
+{
+    height: 100%;
+    float: left;
+    display: block;
+}
+.nav-header > ul > li:first-child
+{
+    margin-left: 20%;
+    border-left: 3px solid darkgrey;
+}
+footer
+{
+    width: 100%;
+    height: 25%;
+    display: block;
+    background: url('https://web.ovl.io/HC/pr13v2/img/cont-bg.png');
+    border-top: 2px solid lightgreen;
+}
+.content
+{
+    margin: 0% 10% auto auto;
+    width: 100%;
+    height: 49.8%;
+    display: block;
+    position: relative;
+}
+.parag
+{
+    width: 100%;
+    height: 10%;
+    display: block;
+    background: lightgrey;
+    float: left;
+}
+.in-parag
+{
+    margin-left: 10%;
+    padding-top: 0.7%;
+    margin-bottom: 1%;
+}
+.resi-1
+{ /* basic responsive img */
+	max-width: 50%;
+	height: auto;
+	width: auto\9; /* IE8 */
+    float: left;
+}
+.resi-2
+{ /* basic responsive img */
+	max-width: 50%;
+	height: auto;
+	width: auto\9; /* IE8 */
+    float: right;
+}
+.resi-3
+{ /* basic responsive img */
+	max-width: 50%;
+	height: auto;
+	width: auto\9; /* IE8 */
+    margin: 0 25%;
+    float: left;
+}
+.foo
+{
+    float: left;
+    width: 33.3%;
+    height: 100%;
+}
+.article
+{
+    font-family: Calibri;
+    width: 100%;
+    text-align: center;
+}
