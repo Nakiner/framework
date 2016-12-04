@@ -1,10 +1,10 @@
 <?php
 $config = Dbconnect::instance();
 $config->set(array(
-    'host' => 'localhost',
-    'user' => 'root',
-    'pass' => '',
-    'name' => 'shit'
+    'host' => 'ovl.io',
+    'user' => 'fw',
+    'pass' => 'frameworking',
+    'name' => 'framework'
 ));
 $config->connect();
 unset($config);
