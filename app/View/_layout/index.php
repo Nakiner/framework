@@ -26,13 +26,13 @@
 <div style="clear: both;"></div>
 <footer>
     <div class="foo">
-
+1
     </div>
     <div class="foo">
-
+2
     </div>
     <div class="foo">
-
+3
     </div>
 </footer>
 </body>

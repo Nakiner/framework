@@ -18,13 +18,13 @@ class Dbconnect
            'host' => $array['host'],
            'user' => $array['user'],
            'pass' => $array['pass'],
-           'name' => $array['name']            
+           'name' => $array['name']
         );
     }
-    
+
     public function connect ()
     {
-        self::$_idConnect = DbSimple_Generic::connect("mysql://".
+        self::$_idConnect = DbSimple_Generic::connect("mysqli://".
         $this->_configs['user'].":".
         $this->_configs['pass']."@".
         $this->_configs['host']."/".

@@ -19,6 +19,7 @@ class View_Class
         include $this->_view;
         $content_for_layout = ob_get_clean();
 		$files = scandir(APP_PATH.DS.'View'.DS.'_element'.DS);
+		$variable = [];
 		foreach($files as $val)
 		{
 			if($val!="." and $val != "..")
@@ -39,22 +40,24 @@ class View_Class
     {
         $this->_conf = config::instance();
         $this->_layout = !empty($layout) ? $layout : $this->_conf->get('default_layout');
-        if(!empty ($view)) $this->_view = $view;
+        $this->_view = !empty ($view) ? $view : className2fileName(Routing_Router::instance()->controller()).DS.Routing_Router::instance()->action();
+        /*if(!empty ($view)) $this->_view = $view;
         else
         {
             $router = Routing_Router::instance();
             $this->_view = className2fileName($router->controller()).DS.$router->action();
-        }
+        }*/
     }
 	public function set($var, $value = '')
     {
-        if(is_array($var))
+        /*if(is_array($var))
         {
             $keys = array_keys($var);
             $values = array_values($var);
             $this->_vars = array_merge($this->_vars, array_combine($keys, $values));
         }
-        else $this->_vars[$var] = $value;
+        else $this->_vars[$var] = $value;*/
+        return is_array($var) ? $this->_vars = array_merge($this->_vars, array_combine(array_keys($var), array_values($var))) : $this->_vars[$var] = $value;
     }
     public function __set($key,$value)
     {

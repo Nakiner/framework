@@ -1,7 +1,7 @@
 ﻿<?php
 Class Controller_Pages extends Controller_Abstract
 {
-    public function error($param)
+    public function error($param) // ф-я вызываемая при 404
     {
         $View = $this->loadView('error');
         $View->view('Pages/empty');

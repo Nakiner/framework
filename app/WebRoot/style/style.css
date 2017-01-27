@@ -97,7 +97,7 @@ footer
     width: 100%;
     height: 25%;
     display: block;
-    background: url('https://web.ovl.io/HC/pr13v2/img/cont-bg.png');
+    background: url('/images/foot-bg.png');
     border-top: 2px solid lightgreen;
 }
 .content

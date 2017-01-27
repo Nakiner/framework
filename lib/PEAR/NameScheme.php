@@ -2,18 +2,21 @@
     define("PEAR_NameScheme_ext", "php");
     define("PEAR_NameScheme_bar", "_");
 
-    class PEAR_NameScheme{
+    class PEAR_NameScheme
+    {
         var $VERSION = "1.00";
 
-        static function name2Path($classname, $absolutize = false){
-            $fname = str_replace(PEAR_NameScheme_bar, '/', $classname)
-                    .'.'.PEAR_NameScheme_ext;
-            foreach (PEAR_NameScheme::getInc($absolutize) as $libDir) {
+        static function name2Path($classname, $absolutize = false)
+        {
+            $fname = str_replace(PEAR_NameScheme_bar, '/', $classname).'.'.PEAR_NameScheme_ext;
+            foreach (PEAR_NameScheme::getInc($absolutize) as $libDir)
+            {
                 $path = $libDir.'/'.$fname;
-                if(file_exists($path)){
+                /*if(file_exists($path)){
                     if(!$absolutize) return $fname;
                     else return $path;
-                }
+                }*/
+                return file_exists($path) && $absolutize ? $path : $fname;
             }
             return false;
         }

@@ -1,10 +1,9 @@
 <?php
 class Cache_Class
 {
-    private static $_instance;
-    private function __construct(){}
-    private function __clone(){}
-    public static function instance ()
+    private static $_instance; // обьект для повторного юзания класаа
+    private function __construct(){} // конструктор для ООП в 7
+    public static function instance () // Плодим обьекты, если есть обьект игнор, если нет создать
     {
         if(!isset(self::$_instance)) self::$_instance = new self();
         return self::$_instance;
@@ -24,18 +23,19 @@ class Cache_Class
     {
 
         if(is_file(CACHE_ROOT.DS.'cache_clean') AND filemtime(CACHE_ROOT.DS.'cache_clean') < time()) $this->clean();
-        $cacheFile = $this->cacheFullName($id); # по id получаем полное имя файла
-        if (file_exists($cacheFile))
+        //$cacheFile = $this->cacheFullName($id); # по id получаем полное имя файла
+        /*if (file_exists($cacheFile))
         {
             if(filemtime($cacheFile) < time()) $this->delete($id);
             else return unserialize(file_get_contents($cacheFile));
         }
-        return false;
+        return false;*/
+        return file_exists($this->cacheFullName($id)) && filemtime($this->cacheFullName($id)) < time() ? $this->delete($id) : unserialize(file_get_contents($this->cacheFullName($id)));
     }
     public function delete($id)
     {
-        $cacheFile = $this->cacheFullName($id);
-        unlink($cacheFile);
+        //$cacheFile = $this->cacheFullName($id);
+       return unlink($this->cacheFullName($id));
     }
     private function cacheFullName($id)
     {

@@ -6,16 +6,14 @@
     require_once 'PHP/Autoload.php';
     require_once 'PEAR/NameScheme.php';
 
-    class PEAR_NameScheme_Autoload{
-        static function classAutoloader($classname){
-            $fname = PEAR_NameScheme::name2path($classname);
-            if($f = @fopen($fname, "r", true)){
-                fclose($f);
-                return include_once ($fname);
-            }
-            return false;
+    class PEAR_NameScheme_Autoload
+    {
+        static function classAutoloader($classname) // подгрузчик классов
+        {
+           return ($f = @fopen(PEAR_NameScheme::name2path($classname), "r", true)) ? fclose($f) && include_once PEAR_NameScheme::name2path($classname): false;
+           // Если класс валидный подключаем его, либо возврат 0
         }
-    }
 
-    PHP_Autoload::register(array("PEAR_NameScheme_Autoload", "classAutoloader"));
+    }
+    PHP_Autoload::register(array("PEAR_NameScheme_Autoload", "classAutoloader")); // Регистрируем функцию в списке
 

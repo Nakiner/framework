@@ -4,7 +4,6 @@ Class Routing_Router
     private static $_instance;
     private $_routes = array();
     private function __construct() {}
-    private function __clone(){}
     public static function instance()
     {
         if (empty (self::$_instance)) self::$_instance = new self();
