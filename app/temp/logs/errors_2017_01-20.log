@@ -1,0 +1,16 @@
+[20-Jan-2017 10:53:22 Europe/Moscow] PHP Fatal error:  Uncaught ReflectionException: Class Controller_Pages does not exist in /var/www/fw.ovl.io/lib/function.php:117
+Stack trace:
+#0 /var/www/fw.ovl.io/lib/function.php(117): ReflectionClass->__construct('Controller_Page...')
+#1 /var/www/fw.ovl.io/lib/function.php(128): errorPath('\xD0\xA1\xD1\x82\xD1\x80\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x86\xD0...')
+#2 /var/www/fw.ovl.io/app/config/bootstrap.php(13): dispatch(Array)
+#3 /var/www/fw.ovl.io/app/WebRoot/index.php(17): include_once('/var/www/fw.ovl...')
+#4 {main}
+  thrown in /var/www/fw.ovl.io/lib/function.php on line 117
+[20-Jan-2017 10:53:23 Europe/Moscow] PHP Fatal error:  Uncaught ReflectionException: Class Controller_Pages does not exist in /var/www/fw.ovl.io/lib/function.php:117
+Stack trace:
+#0 /var/www/fw.ovl.io/lib/function.php(117): ReflectionClass->__construct('Controller_Page...')
+#1 /var/www/fw.ovl.io/lib/function.php(128): errorPath('\xD0\xA1\xD1\x82\xD1\x80\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x86\xD0...')
+#2 /var/www/fw.ovl.io/app/config/bootstrap.php(13): dispatch(Array)
+#3 /var/www/fw.ovl.io/app/WebRoot/index.php(17): include_once('/var/www/fw.ovl...')
+#4 {main}
+  thrown in /var/www/fw.ovl.io/lib/function.php on line 117

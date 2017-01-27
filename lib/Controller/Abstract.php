@@ -3,7 +3,7 @@
 abstract class Controller_Abstract
 {
     public function __construct(){}
-    final public function redirect($url = '')
+    final public function redirect($url = '') // функция перенаправления пользователя
     {
         $appBaseUrl = config::instance()->get('base_uri'); // базовый путь
         $url = "{$appBaseUrl}{$url}"; // путь, куда кинем

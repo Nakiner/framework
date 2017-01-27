@@ -1,17 +1,16 @@
 <?php
 class Dbconnect
 {
-    private static $_instance;
-    private static $_idConnect;
-    private $_configs = array();
+    private static $_instance; // reusable class obj
+    private static $_idConnect; // id connect'a
+    private $_configs = array(); // переменные коннекта
     private function __construct(){}
-    private function __clone(){}
     public static function instance ()
     {
         if(empty(self::$_instance)) self::$_instance = new self();
         return self::$_instance;
 	}
-    public function set($array)
+    public function set($array) // установим переменные в классе
     {
         $this->_configs = array
         (
@@ -22,7 +21,7 @@ class Dbconnect
         );
     }
 
-    public function connect ()
+    public function connect () // вызываем метод и подключаемся
     {
         self::$_idConnect = DbSimple_Generic::connect("mysqli://".
         $this->_configs['user'].":".

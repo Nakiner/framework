@@ -76,7 +76,7 @@ function encodestring($string){
     );
     return $output;
 }
-function className2fileName($name)
+function className2fileName($name) // Имя класса в имя файла для автозагрузки
 {
 
     $fromSimple = array('_A','_B','_C','_D','_E','_F','_G','_H',
@@ -99,7 +99,7 @@ function className2fileName($name)
    $fileName = ltrim(str_replace($from, $to, $name),'_');
    return $fileName; # возвращение изменнёного пути
 }
-function _strtolower($string)
+function _strtolower($string) // Буквы в нижний регистр (для норм кодировок)
 {
     $small = array('а','б','в','г','д','е','ё','ж','з','и','й',
                    'к','л','м','н','о','п','р','с','т','у','ф',
@@ -111,7 +111,7 @@ function _strtolower($string)
                    'Э', 'Ю', 'Я');
     return str_replace($large, $small, $string); 
 }
-function errorPath($text)
+function errorPath($text) // Вызов метода при 404 или других ошибках
 {
     $controllerClass = 'Controller_Pages';
     $refl = new ReflectionClass($controllerClass);
@@ -120,16 +120,16 @@ function errorPath($text)
     $action->invokeArgs($controller, array($text));
     exit();
 }
-function dispatch($route)
+function dispatch($route) // запуск приложения
 {
     if(empty($route)) errorPath('Страница с таким адресом не существует. <br /> <br /> Код ошибки 4343 - Enter false rout.');
     $controllerClass = 'Controller_'.$route['controller'];
-    if(class_exists($controllerClass)) $refl = new ReflectionClass($controllerClass);
+    if(class_exists($controllerClass)) $reflection = new ReflectionClass($controllerClass);
     else errorPath('Страница с таким адресом не существует. <br /> <br /> Код ошибки 4332 - Class not found.');
-    if ($refl->hasMethod($route['action']))
+    if ($reflection->hasMethod($route['action']))
     {
-        $controller = $refl->newInstance();
-        $action = $refl->getMethod($route['action']);
+        $controller = $reflection->newInstance();
+        $action = $reflection->getMethod($route['action']);
         if($action->getNumberOfRequiredParameters() > count($route['action']))
         {
             errorPath('Страница с таким адресом не существует. <br /> <br /> Код ошибки 4321 -  Erroneous number of parameters.');
@@ -138,7 +138,7 @@ function dispatch($route)
     }
     else errorPath('Страница с таким адресом не существует. <br /> <br /> Код ошибки 4310 -  Error load controller and action.');
 }
-function errorReporting()
+function errorReporting() // как нам ошибки выводить? на странице или в файл пишем
 {
     if (Config::instance()->get('dev_mode') == 1)
     {
@@ -153,7 +153,7 @@ function errorReporting()
         else ini_set('log_errors', 'Off');
     }
 }
-function databaseErrorHandler($message,$info)
+function databaseErrorHandler($message,$info) // Для вывода ошибок БД
 {
     if(!errorReporting()) return;
     echo "SQL Error: $message<br /><pre>";

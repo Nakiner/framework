@@ -6,7 +6,7 @@ class View_Class
     private $_view = '';
     private $_vars = array();
     private $_render;
-    public function render($title, $meta_k = "", $meta_d = "", $render = true)
+    public function render($title, $meta_k = "", $meta_d = "", $render = true) // фуннкция вывода из файлов в контент на странице
     {
         if($render===false) $this->_render = false;
         if($this->_render === false) return false;
@@ -36,7 +36,7 @@ class View_Class
         header('Content-length: '.ob_get_length());
         $this->_render = false;
     }
-    public function __construct($layout ='',$view = '')
+    public function __construct($layout ='',$view = '') // сборщик класса, инит конфига, шаблона вьюхи, и подгрузка
     {
         $this->_conf = config::instance();
         $this->_layout = !empty($layout) ? $layout : $this->_conf->get('default_layout');
@@ -48,7 +48,7 @@ class View_Class
             $this->_view = className2fileName($router->controller()).DS.$router->action();
         }*/
     }
-	public function set($var, $value = '')
+	public function set($var, $value = '') // добавить переменную в класс или слияние массивов
     {
         /*if(is_array($var))
         {
@@ -59,15 +59,15 @@ class View_Class
         else $this->_vars[$var] = $value;*/
         return is_array($var) ? $this->_vars = array_merge($this->_vars, array_combine(array_keys($var), array_values($var))) : $this->_vars[$var] = $value;
     }
-    public function __set($key,$value)
+    public function __set($key,$value) // установка значений в массив
     {
         $this->_vars[$key] = $value;        
     }
-    public function view($view)
+    public function view($view) // Какую вьюху грузить будем
     {
         $this->_view = $view;
     }
-	public function layout($layout)
+	public function layout($layout) // какой шаблон будем использовать
     {
         $this->_layout = $layout;
     }
