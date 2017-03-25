@@ -11,12 +11,12 @@ Class Controller_Pages extends Controller_Abstract
     public function index()
     {
         $View = $this->loadView('index');// _layout
-        $View->view('Pages/empty'); // Pages
+        $View->view('Pages/index'); // Pages
         $View->render("Главная"); // title
     }
     public function articles()
     {
-        $View = $this->loadView('articles');
+        $View = $this->loadView('index');
         $View->view('Pages/articles'); // Pages
         $View->render("Статьи"); // title
     }

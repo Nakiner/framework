@@ -1,3 +1,6 @@
+<div class="parag">
+    <h2 class="in-parag">Статьи</h2>
+</div>
 <?php
     $app = Model_DB::query("SELECT * FROM `article`");
     foreach($app as $shit => $do)
